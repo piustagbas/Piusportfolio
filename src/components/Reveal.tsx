@@ -1,12 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
-
-const variants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
-};
 
 type RevealProps = {
   children: ReactNode;
@@ -24,14 +19,20 @@ export function Reveal({
   const reduceMotion = useReducedMotion();
   const Component = motion[as];
 
+  // Keep content visible by default so mobile never stays blank if
+  // IntersectionObserver / animation timing fails after hydration.
+  if (reduceMotion) {
+    const StaticTag = as;
+    return <StaticTag className={className}>{children}</StaticTag>;
+  }
+
   return (
     <Component
       className={className}
-      variants={variants}
-      initial={reduceMotion ? "visible" : "hidden"}
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay }}
+      initial={{ opacity: 0.001, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px -10% 0px" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay }}
     >
       {children}
     </Component>

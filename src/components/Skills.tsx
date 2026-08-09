@@ -223,12 +223,12 @@ export function Skills() {
                     return (
                       <motion.li
                         key={item}
-                        initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+                        initial={reduceMotion ? false : { opacity: 0.001, y: 14 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.05, margin: "40px 0px" }}
                         transition={{
-                          duration: 0.45,
-                          delay: 0.04 * itemIndex,
+                          duration: 0.4,
+                          delay: Math.min(0.04 * itemIndex, 0.2),
                           ease: [0.22, 1, 0.36, 1],
                         }}
                         whileHover={

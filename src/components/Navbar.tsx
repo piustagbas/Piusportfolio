@@ -24,18 +24,22 @@ export function Navbar() {
     };
   }, [open]);
 
+  const onHero = !scrolled && !open;
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled || open
-          ? "bg-fog/90 backdrop-blur-md border-b border-line"
+          ? "bg-fog/95 backdrop-blur-md border-b border-line"
           : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <a
           href="#top"
-          className="font-display text-lg font-bold tracking-tight text-ink sm:text-xl"
+          className={`font-display text-lg font-bold tracking-tight sm:text-xl ${
+            onHero ? "text-white" : "text-ink"
+          }`}
         >
           {profile.name}
         </a>
@@ -45,7 +49,9 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-ink-soft transition-colors hover:text-teal"
+                className={`text-sm font-medium transition-colors hover:text-teal ${
+                  onHero ? "text-white/85 hover:text-white" : "text-ink-soft"
+                }`}
               >
                 {link.label}
               </a>
@@ -63,7 +69,9 @@ export function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          className={`inline-flex h-10 w-10 items-center justify-center md:hidden ${
+            onHero ? "text-white" : "text-ink"
+          }`}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
