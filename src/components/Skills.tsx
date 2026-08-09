@@ -100,8 +100,8 @@ export function Skills() {
                           ease: [0.22, 1, 0.36, 1],
                         }}
                       >
-                        <div className="surface-card group flex h-full min-h-[8.5rem] flex-col items-center justify-center px-4 py-6 text-center">
-                          <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sand text-slate transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
+                        <div className="group flex h-full min-h-[8.5rem] flex-col items-center justify-center rounded-3xl border border-[#9ad8ff]/35 bg-gradient-to-br from-[#d9f0ff] via-[#c5e7ff] to-[#aedcff] px-4 py-6 text-center shadow-[0_14px_34px_rgba(26,122,191,0.16)] transition-all duration-300 hover:-translate-y-1.5 hover:border-teal hover:shadow-[0_20px_40px_rgba(26,122,191,0.24)]">
+                          <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/70 text-slate transition-colors duration-300 group-hover:bg-slate group-hover:text-white">
                             <Icon size={22} />
                           </span>
                           <span className="font-display text-sm font-semibold text-ink sm:text-base">
