@@ -5,9 +5,9 @@ import { Reveal } from "@/components/Reveal";
 export function About() {
   return (
     <section id="about" className="relative px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
         <Reveal>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-teal">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-accent">
             About
           </p>
           <h2 className="font-display text-balance text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
@@ -15,8 +15,8 @@ export function About() {
           </h2>
         </Reveal>
 
-        <Reveal delay={0.12}>
-          <div className="space-y-5 text-base leading-relaxed text-ink-soft sm:text-lg">
+        <Reveal delay={0.1}>
+          <div className="surface-card space-y-5 p-6 text-base leading-relaxed text-ink-soft sm:p-8 sm:text-lg">
             <p>
               I am Pius Lucky — a fullstack developer with hands-on software
               quality assurance experience. I care about both crafting features

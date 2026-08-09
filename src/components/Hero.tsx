@@ -1,13 +1,33 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
 import { profile } from "@/lib/data";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const fullTitle = `${profile.firstName} ${profile.lastName}`;
+  const [typed, setTyped] = useState(reduceMotion ? fullTitle : "");
 
-  const brandWords = [profile.firstName.toUpperCase(), profile.lastName.toUpperCase()];
+  useEffect(() => {
+    if (reduceMotion) {
+      setTyped(fullTitle);
+      return;
+    }
+
+    let index = 0;
+    setTyped("");
+    const id = window.setInterval(() => {
+      index += 1;
+      setTyped(fullTitle.slice(0, index));
+      if (index >= fullTitle.length) {
+        window.clearInterval(id);
+      }
+    }, 70);
+
+    return () => window.clearInterval(id);
+  }, [fullTitle, reduceMotion]);
 
   return (
     <section
@@ -19,48 +39,35 @@ export function Hero() {
         className={`hero-plane absolute inset-0 ${reduceMotion ? "" : "md:animate-drift"}`}
         aria-hidden
       />
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.18), transparent 35%), radial-gradient(circle at 80% 70%, rgba(37,99,235,0.42), transparent 40%)",
-        }}
-        aria-hidden
-      />
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28 sm:px-8 sm:pb-20 lg:justify-center lg:pb-24">
+      <div className="relative mx-auto flex min-h-[100svh] max-w-4xl flex-col items-center justify-center px-5 pb-16 pt-28 text-center sm:px-8">
         <motion.p
           initial={reduceMotion ? false : { opacity: 0.001, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-4 max-w-xl text-sm font-medium uppercase tracking-[0.22em] text-white/75 sm:text-base"
+          transition={{ duration: 0.55 }}
+          className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-teal sm:text-base"
         >
           {profile.role}
         </motion.p>
 
-        <h1 className="font-display text-[clamp(2.75rem,11vw,8.5rem)] font-bold leading-[0.9] tracking-[-0.04em]">
-          {brandWords.map((word, index) => (
-            <motion.span
-              key={word}
-              className="block"
-              initial={reduceMotion ? false : { opacity: 0.001, y: 36 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.18 + index * 0.12,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              {word}
-            </motion.span>
-          ))}
+        <h1 className="font-display text-[clamp(2.6rem,9vw,5.5rem)] font-bold leading-[1.05] tracking-[-0.03em]">
+          Welcome to{" "}
+          <span className="block text-white">
+            {typed}
+            <span
+              className={`ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.08em] bg-teal ${
+                typed.length < fullTitle.length ? "animate-pulse" : "opacity-0"
+              }`}
+              aria-hidden
+            />
+          </span>
         </h1>
 
         <motion.p
           initial={reduceMotion ? false : { opacity: 0.001, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg"
         >
           {profile.tagline}
         </motion.p>
@@ -68,19 +75,19 @@ export function Hero() {
         <motion.div
           initial={reduceMotion ? false : { opacity: 0.001, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.65 }}
-          className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center"
         >
           <a
             href="#projects"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal-deep sm:text-base"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-teal px-8 py-3.5 text-sm font-bold text-ink transition-transform duration-300 hover:scale-[1.03] hover:bg-teal-deep hover:text-white sm:text-base"
           >
             {profile.resumeLabel}
             <ArrowDownRight size={18} />
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10 sm:text-base"
+            className="inline-flex items-center justify-center rounded-full border border-white/55 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 sm:text-base"
           >
             Get in touch
           </a>

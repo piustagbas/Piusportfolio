@@ -14,7 +14,7 @@ export function Contact() {
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <Reveal>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-teal">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-accent">
               Contact
             </p>
             <h2 className="font-display text-balance text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
@@ -28,7 +28,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <div className="space-y-5">
+            <div className="surface-card space-y-5 p-6 sm:p-8">
               <a
                 href={`mailto:${profile.email}`}
                 className="group flex items-start gap-4"
@@ -37,10 +37,10 @@ export function Contact() {
                   <Mail size={20} />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                  <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-accent">
                     Email
                   </span>
-                  <span className="mt-1 block text-lg font-medium text-ink transition-colors group-hover:text-teal">
+                  <span className="mt-1 block text-lg font-medium text-ink transition-colors group-hover:text-teal-deep">
                     {profile.email}
                   </span>
                 </span>
@@ -56,10 +56,10 @@ export function Contact() {
                   <GitHubIcon size={20} />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                  <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-accent">
                     GitHub
                   </span>
-                  <span className="mt-1 block text-lg font-medium text-ink transition-colors group-hover:text-teal">
+                  <span className="mt-1 block text-lg font-medium text-ink transition-colors group-hover:text-teal-deep">
                     github.com/piustagbas
                   </span>
                 </span>
@@ -75,10 +75,10 @@ export function Contact() {
                   <LinkedInIcon size={20} />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                  <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-accent">
                     LinkedIn
                   </span>
-                  <span className="mt-1 block text-lg font-medium text-ink transition-colors group-hover:text-teal">
+                  <span className="mt-1 block text-lg font-medium text-ink transition-colors group-hover:text-teal-deep">
                     linkedin.com/in/pius-lucky
                   </span>
                 </span>
@@ -89,7 +89,7 @@ export function Contact() {
                   <MapPin size={20} />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-soft">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-accent">
                     Location
                   </p>
                   <p className="mt-1 text-lg font-medium text-ink">
@@ -103,7 +103,7 @@ export function Contact() {
                   href={`mailto:${profile.email}`}
                   whileHover={reduceMotion ? undefined : { scale: 1.02 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                  className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-4 text-base font-semibold text-white transition-colors hover:bg-teal-deep"
+                  className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-4 text-base font-bold text-ink transition-colors hover:bg-teal-deep hover:text-white"
                 >
                   Start a conversation
                 </motion.a>
@@ -111,7 +111,7 @@ export function Contact() {
                   href={profile.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-fog px-6 py-4 text-base font-semibold text-ink transition-colors hover:border-teal hover:text-teal"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-sand px-6 py-4 text-base font-semibold text-ink transition-colors hover:border-teal hover:text-teal-deep"
                 >
                   <GitHubIcon size={18} />
                   GitHub
@@ -120,7 +120,7 @@ export function Contact() {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-fog px-6 py-4 text-base font-semibold text-ink transition-colors hover:border-teal hover:text-teal"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-sand px-6 py-4 text-base font-semibold text-ink transition-colors hover:border-teal hover:text-teal-deep"
                 >
                   <LinkedInIcon size={18} />
                   LinkedIn

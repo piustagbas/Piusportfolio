@@ -84,7 +84,7 @@ export function ChatAssistant() {
             transition={{ duration: 0.25 }}
             className="mb-3 flex h-[min(34rem,72vh)] w-[min(22.5rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-line bg-fog shadow-[0_20px_50px_rgba(15,23,42,0.18)]"
           >
-            <div className="flex items-center justify-between bg-gradient-to-r from-slate to-teal px-4 py-3 text-white">
+            <div className="flex items-center justify-between bg-slate px-4 py-3 text-white">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
                   <Bot size={18} />
@@ -113,7 +113,7 @@ export function ChatAssistant() {
                   <div
                     className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                       message.role === "user"
-                        ? "rounded-br-md bg-teal text-white"
+                        ? "rounded-br-md bg-teal text-ink"
                         : "rounded-bl-md border border-line bg-white text-ink"
                     }`}
                   >
@@ -172,7 +172,7 @@ export function ChatAssistant() {
                 <button
                   type="submit"
                   disabled={!input.trim() || typing}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-teal text-white transition-colors hover:bg-teal-deep disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-teal text-ink transition-colors hover:bg-teal-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                   aria-label="Send message"
                 >
                   <Send size={15} />
@@ -192,17 +192,23 @@ export function ChatAssistant() {
         )}
       </AnimatePresence>
 
+      {!open && (
+        <div className="mb-3 mr-1 flex justify-end">
+          <span className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-ink shadow-[0_8px_24px_rgba(5,29,64,0.12)]">
+            Chat with Pius
+          </span>
+        </div>
+      )}
       <motion.button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        whileHover={reduceMotion ? undefined : { scale: 1.04 }}
+        whileHover={reduceMotion ? undefined : { scale: 1.05 }}
         whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-        className="inline-flex items-center gap-2 rounded-full bg-teal px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(37,99,235,0.35)] transition-colors hover:bg-teal-deep"
+        className="ml-auto inline-flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-slate text-white shadow-[0_12px_30px_rgba(5,29,64,0.28)] transition-colors hover:bg-teal hover:text-ink"
         aria-expanded={open}
         aria-label={open ? "Close chat assistant" : "Open chat assistant"}
       >
-        {open ? <X size={18} /> : <MessageCircle size={18} />}
-        <span className="hidden sm:inline">{open ? "Close" : "Chat with AI"}</span>
+        {open ? <X size={22} /> : <MessageCircle size={22} />}
       </motion.button>
     </div>
   );

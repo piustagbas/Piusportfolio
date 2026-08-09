@@ -24,13 +24,13 @@ export function Navbar() {
     };
   }, [open]);
 
-  const onHero = !scrolled && !open;
+  const solid = scrolled || open;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || open
-          ? "bg-fog/95 backdrop-blur-md border-b border-line"
+        solid
+          ? "border-b border-line bg-white/95 shadow-[0_8px_30px_rgba(5,29,64,0.08)] backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
@@ -38,7 +38,7 @@ export function Navbar() {
         <a
           href="#top"
           className={`font-display text-lg font-bold tracking-tight sm:text-xl ${
-            onHero ? "text-white" : "text-ink"
+            solid ? "text-ink" : "text-white"
           }`}
         >
           {profile.name}
@@ -49,8 +49,10 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-teal ${
-                  onHero ? "text-white/85 hover:text-white" : "text-ink-soft"
+                className={`text-sm font-medium transition-colors ${
+                  solid
+                    ? "text-ink-soft hover:text-teal-deep"
+                    : "text-white/85 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -60,7 +62,7 @@ export function Navbar() {
           <li>
             <a
               href="#contact"
-              className="inline-flex items-center rounded-full bg-teal px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-deep"
+              className="inline-flex items-center rounded-full bg-teal px-5 py-2 text-sm font-bold text-ink transition-colors hover:bg-teal-deep hover:text-white"
             >
               Hire me
             </a>
@@ -70,7 +72,7 @@ export function Navbar() {
         <button
           type="button"
           className={`inline-flex h-10 w-10 items-center justify-center md:hidden ${
-            onHero ? "text-white" : "text-ink"
+            solid ? "text-ink" : "text-white"
           }`}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -87,7 +89,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="border-t border-line bg-fog md:hidden"
+            className="border-t border-line bg-white md:hidden"
           >
             <ul className="flex flex-col gap-1 px-5 py-6">
               {navLinks.map((link) => (
@@ -104,7 +106,7 @@ export function Navbar() {
               <li className="pt-3">
                 <a
                   href="#contact"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-teal px-4 py-3 text-base font-semibold text-white"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-teal px-4 py-3 text-base font-bold text-ink"
                   onClick={() => setOpen(false)}
                 >
                   Hire me

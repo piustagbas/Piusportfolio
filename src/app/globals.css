@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #0f172a;
-  --ink-soft: #334155;
-  --mist: #eef2ff;
-  --fog: #f8faff;
-  --teal: #2563eb;
-  --teal-deep: #1d4ed8;
-  --slate: #1e3a8a;
-  --sand: #dbe4ff;
-  --line: rgba(15, 23, 42, 0.12);
-  --glow: rgba(37, 99, 235, 0.22);
+  --ink: #051d40;
+  --ink-soft: #3d5470;
+  --mist: #f5f7fa;
+  --fog: #ffffff;
+  --teal: #38b6ff;
+  --teal-deep: #1a9aef;
+  --slate: #0a2a52;
+  --sand: #eef3f8;
+  --accent: #ff8a3d;
+  --line: rgba(5, 29, 64, 0.1);
+  --glow: rgba(56, 182, 255, 0.22);
+  --shadow: 0 14px 40px rgba(5, 29, 64, 0.1);
+  --shadow-hover: 0 22px 50px rgba(5, 29, 64, 0.16);
   --background: var(--mist);
   --foreground: var(--ink);
 }
@@ -26,6 +29,7 @@
   --color-teal-deep: var(--teal-deep);
   --color-slate: var(--slate);
   --color-sand: var(--sand);
+  --color-accent: var(--accent);
   --color-line: var(--line);
   --font-sans: var(--font-figtree);
   --font-display: var(--font-syne);
@@ -53,48 +57,56 @@ body {
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.28);
+  background: rgba(56, 182, 255, 0.28);
   color: var(--ink);
 }
 
 .atmosphere {
   background:
-    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(37, 99, 235, 0.18), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(30, 58, 138, 0.12), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 70% 90%, rgba(59, 130, 246, 0.14), transparent 55%),
-    linear-gradient(160deg, #f8faff 0%, #eef2ff 45%, #dbe4ff 100%);
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(56, 182, 255, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 10%, rgba(255, 138, 61, 0.08), transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #f5f7fa 45%, #eef3f8 100%);
 }
 
 .grid-overlay {
-  background-image:
-    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+  display: none;
 }
 
 .hero-plane {
   background:
-    linear-gradient(115deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 58, 138, 0.55) 42%, rgba(37, 99, 235, 0.48) 100%),
-    url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=2400&q=80")
+    linear-gradient(180deg, rgba(5, 29, 64, 0.55) 0%, rgba(5, 29, 64, 0.72) 55%, rgba(5, 29, 64, 0.88) 100%),
+    url("https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=2400&q=80")
       center / cover no-repeat;
+}
+
+.surface-card {
+  background: #ffffff;
+  border: 1px solid rgba(5, 29, 64, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.surface-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(56, 182, 255, 0.35);
 }
 
 .text-balance {
   text-wrap: balance;
 }
 
-.skill-track {
-  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-}
-
 @keyframes drift {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: scale(1);
   }
   50% {
-    transform: translate3d(2%, -1.5%, 0) scale(1.04);
+    transform: scale(1.04);
   }
 }
 
@@ -104,16 +116,16 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
 .animate-drift {
-  animation: drift 18s ease-in-out infinite;
+  animation: drift 20s ease-in-out infinite;
 }
 
 .animate-float-soft {
-  animation: float-soft 6s ease-in-out infinite;
+  animation: float-soft 5.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -122,7 +134,13 @@ body {
   }
 
   .animate-drift,
-  .animate-float-soft {
+  .animate-float-soft,
+  .surface-card {
     animation: none;
+    transition: none;
+  }
+
+  .surface-card:hover {
+    transform: none;
   }
 }
