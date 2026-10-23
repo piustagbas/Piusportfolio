@@ -64,7 +64,7 @@ export function Testimonials() {
           ))}
         </div>
 
-        <aside className="surface-card mx-auto mt-10 max-w-md p-5 sm:mt-12 sm:p-6">
+        <aside className="surface-card mx-auto mt-10 max-w-2xl p-5 sm:mt-12 sm:p-7">
           <div className="flex flex-col items-center text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
               Platform recognition
@@ -72,26 +72,26 @@ export function Testimonials() {
             <h3 className="mt-2 font-display text-2xl font-bold tracking-tight text-ink">
               {featuredTestimonial.company}
             </h3>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-soft sm:text-base">
+            <p className="mt-3 max-w-lg text-sm leading-relaxed text-ink-soft sm:text-base">
               {featuredTestimonial.caption}
             </p>
 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${featuredTestimonial.screenshot}?v=3`}
+              src={`${featuredTestimonial.screenshot}?v=4`}
               alt={featuredTestimonial.screenshotAlt}
-              width={640}
-              height={295}
-              className="mt-5 block h-auto w-[min(100%,300px)] rounded-lg border border-line bg-[#1a1d21] shadow-sm"
+              width={960}
+              height={443}
+              className="mt-5 block h-auto w-full max-w-[520px] rounded-xl border border-line bg-[#1a1d21] shadow-md sm:max-w-[560px]"
             />
 
             <a
               href={featuredTestimonial.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-slate transition-colors hover:text-teal-deep"
+              className="mt-5 inline-flex items-center justify-center gap-2 text-sm font-semibold text-slate transition-colors hover:text-teal-deep"
             >
-              Visit mercor.com
+              Join Mercor via my referral
               <ExternalLink size={15} aria-hidden />
             </a>
           </div>

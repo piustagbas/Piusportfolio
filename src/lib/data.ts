@@ -100,8 +100,8 @@ export const testimonials = [
 
 export const featuredTestimonial = {
   company: "Mercor",
-  href: "https://mercor.com",
-  screenshot: "/testimonials/mercor-referral.png",
+  href: "https://t.mercor.com/EvZDH",
+  screenshot: "/testimonials/mercor-referral.jpg",
   screenshotAlt: "Mercor referral message inviting Pius to refer talent",
   caption:
     "Mercor invited Pius to refer talent based on the quality of his work — a real-world vote of confidence from the platform.",
