@@ -24,7 +24,7 @@ export function Hero() {
       if (index >= fullTitle.length) {
         window.clearInterval(id);
       }
-    }, 70);
+    }, 55);
 
     return () => window.clearInterval(id);
   }, [fullTitle, reduceMotion]);
@@ -41,10 +41,29 @@ export function Hero() {
       />
 
       <div className="relative mx-auto flex min-h-[100svh] max-w-4xl flex-col items-center justify-center px-5 pb-16 pt-28 text-center sm:px-8">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0.001, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="portrait-ring mb-7"
+        >
+          <div className="portrait-circle">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={profile.portrait}
+              alt={`${profile.firstName} ${profile.lastName}`}
+              width={144}
+              height={144}
+              className="h-full w-full object-cover object-center"
+              decoding="async"
+            />
+          </div>
+        </motion.div>
+
         <motion.p
-          initial={reduceMotion ? false : { opacity: 0.001, y: 16 }}
+          initial={reduceMotion ? false : { opacity: 0.001, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.4 }}
           className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-teal sm:text-base"
         >
           {profile.role}
@@ -64,18 +83,18 @@ export function Hero() {
         </h1>
 
         <motion.p
-          initial={reduceMotion ? false : { opacity: 0.001, y: 16 }}
+          initial={reduceMotion ? false : { opacity: 0.001, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
           className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg"
         >
           {profile.tagline}
         </motion.p>
 
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0.001, y: 12 }}
+          initial={reduceMotion ? false : { opacity: 0.001, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.25 }}
           className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center"
         >
           <a

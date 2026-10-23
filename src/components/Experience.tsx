@@ -22,20 +22,26 @@ export function Experience() {
           {experience.map((item, index) => (
             <Reveal key={item.title} delay={0.08 * index}>
               <article className="surface-card h-full p-6 sm:p-8">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-accent">
-                  {item.period}
-                </p>
-                <h3 className="mt-3 font-display text-2xl font-bold text-ink sm:text-3xl">
+                <div className="mb-5 flex items-center justify-between gap-3">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-accent">
+                    {item.period}
+                  </p>
+                  <span className="h-px flex-1 bg-line" aria-hidden />
+                  <span className="font-display text-sm font-bold text-teal">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
                   {item.title}
                 </h3>
                 <p className="mt-4 text-base leading-relaxed text-ink-soft sm:text-lg">
                   {item.summary}
                 </p>
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-6 space-y-3.5">
                   {item.points.map((point) => (
                     <li key={point} className="flex gap-3 text-base text-ink-soft">
                       <span
-                        className="mt-2 h-2 w-2 shrink-0 rounded-full bg-teal"
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal shadow-[0_0_0_3px_rgba(56,182,255,0.16)]"
                         aria-hidden
                       />
                       <span>{point}</span>

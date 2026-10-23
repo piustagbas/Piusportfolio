@@ -29,10 +29,10 @@ export function Reveal({
   return (
     <Component
       className={className}
-      initial={{ opacity: 0.001, y: 20 }}
+      initial={{ opacity: 0.001, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.05, margin: "0px 0px -10% 0px" }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay }}
+      viewport={{ once: true, amount: 0.08, margin: "0px 0px -8% 0px" }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1], delay }}
     >
       {children}
     </Component>

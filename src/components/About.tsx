@@ -16,13 +16,17 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="surface-card space-y-5 p-6 text-base leading-relaxed text-ink-soft sm:p-8 sm:text-lg">
-            <p>
+          <div className="surface-card relative space-y-5 overflow-hidden p-6 text-base leading-relaxed text-ink-soft sm:p-8 sm:text-lg">
+            <span
+              className="pointer-events-none absolute -right-6 top-0 h-28 w-28 rounded-full bg-teal/10 blur-2xl"
+              aria-hidden
+            />
+            <p className="relative">
               I am Pius Lucky — a fullstack developer with hands-on software
               quality assurance experience. I care about both crafting features
               and verifying they behave correctly under real use.
             </p>
-            <p>
+            <p className="relative">
               On the engineering side I work across React and Next.js for the
               web, React Native and Expo for mobile, and Java, Spring Boot, C#,
               and Node.js on the backend. On the quality side I combine careful

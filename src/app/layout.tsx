@@ -40,8 +40,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${figtree.variable} ${syne.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="atmosphere min-h-full flex flex-col font-sans text-ink">
+      <body
+        className="atmosphere min-h-full flex flex-col font-sans text-ink"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
